@@ -1,0 +1,72 @@
+$green: #16A085;
+$grey: #5A6576;
+$other-grey: #E7ECEE;
+$blue: #058CC5;
+$red: #D2527F;
+$light-blue: #3498DB;
+/* Colores */
+.white{
+  background-color: white;
+}
+.white-text{
+  color: white;
+}
+.green{
+  background-color: $green;
+}
+.green-text{
+  color: $green;
+}
+.blue{
+  background-color: $blue;
+}
+.blue-text{
+  color: $blue;
+}
+.light-blue{
+  background-color: $light-blue;
+}
+.light-blue-text{
+  color: $light-blue;
+}
+.red{
+  background-color: $red;
+}
+.red-text{
+  color: $red;
+}
+.gray{
+  background-color: $grey;
+}
+.gray-text{
+  color: $grey;
+}
+.other-grey{
+  background-color: $other-grey;
+}
+.other-grey-text{
+  color: $other-grey
+}
+/*Paddings*/
+.big-padding{
+  padding: 2em;
+}
+.no-padding{
+padding: 0;
+}
+.inline-block{
+  float: none !important;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Alineación*/
+.no-float{
+  float: none !important;
+}
+
+/* Tamaños */
+
+.ultra-big{
+  font-size: 7em;
+}
