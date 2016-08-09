@@ -8,6 +8,12 @@ gem "haml-rails"
 gem "bootstrap-sass"
 #Material Design
 gem "bootstrap-material-design"
+#testing
+gem 'shoulda-matchers'
+gem 'rspec-rails'
+gem 'factory_girl_rails','~> 4.0'
+#paperclip subir imagenes
+gem 'paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
 # Use sqlite3 as the database for Active Record
