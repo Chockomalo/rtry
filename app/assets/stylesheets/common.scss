@@ -9,6 +9,10 @@ $other-grey: #E7ECEE;
 $blue: #058CC5;
 $red: #E43D7A;
 $light-blue: #3498DB;
+/*Texto*/
+.bold{
+  font-weight: bold;
+}
 /* Colores */
 .white{
   background-color: white;
@@ -73,6 +77,7 @@ padding: 0;
   float: none !important;
   display: inline-block;
   vertical-align: middle;
+  margin-right: -4px;
 }
 .absolute{
   position: absolute;
@@ -81,6 +86,9 @@ padding: 0;
 /* Tamaños */
 .small{
   font-size: 12px
+}
+.normal{
+  font-size: 1.2em;
 }
 .medium{
   font-size: 1.5em;
