@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
-
+#Anotacion de los modelos
+gem "annotate"
+#gem pay pal
+gem "paypal-sdk-rest"
 #Devise
 gem "devise"
 #HAMl Mejora HTML
