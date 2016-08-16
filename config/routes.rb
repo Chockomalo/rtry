@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get "/carrito", to: "shopping_carts#show"
+  get "/add/:product_id", as: :add_to_cart,to: "in_shopping_carts#create"
   authenticated :user do
     root 'welcome#index'
   end
