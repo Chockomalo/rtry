@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :products
   resources :in_shopping_carts, only: [:create, :destroy]
   devise_for :users
+
+  get "/carrito", to: "shopping_carts#show"
   authenticated :user do
     root 'welcome#index'
   end
