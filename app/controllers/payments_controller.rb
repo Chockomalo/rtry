@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    paypal_helper= Stores::Paypal.new(shopping_cart: @shopping_cart)
+    paypal_helper= Stores::Paypal.new(shopping_cart: @shopping_cart, return_url: checkout_url, cancel_url: carrito_url)
       if paypal_helper.procces_payment.create
         @my_paymet = MyPayment.create!(paypal_id: paypal_helper.payment.id, ip: request.remote_ip, shopping_cart_id: cookies[:shopping_cart_id] )
         redirect_to paypal_helper.payment.links.find{|v| v.method == "REDIRECT"}.href

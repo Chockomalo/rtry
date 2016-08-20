@@ -30,7 +30,7 @@ class ShoppingCart < ApplicationRecord
 
   end
   def items
-    self.products.map{ |product| product}
+    self.products.map{ |product| product.paypal_form}
   end
   def total
     products.sum(:pricing)

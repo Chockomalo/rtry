@@ -1,9 +1,11 @@
 class Stores::Paypal
   include PayPal::SDK::REST
-  attr_accessor :payment, :shopping_cart
+  attr_accessor :payment, :shopping_cart, :return_url, :cancel_url
 
   def initialize(options)
       self.shopping_cart = options[:shopping_cart]
+      self.return_url= options[:return_url]
+      self.cancel_url= options[:cancel_url]
   end
 
   def procces_payment
@@ -15,7 +17,7 @@ class Stores::Paypal
       transactions:[
         {
           items_list:{
-            items: [self.shopping_cart.items]
+            items: self.shopping_cart.items
           },
           amount:{
             total: (self.shopping_cart.total / 100),
@@ -25,8 +27,8 @@ class Stores::Paypal
         }
       ],
       redirect_urls:{
-        return_url: "http://localhost:3000/checkout",
-        cancel_url: "http://localhost:3000/carrito"
+        return_url: self.return_url,
+        cancel_url: self.cancel_url
       }
       })
       self.payment
