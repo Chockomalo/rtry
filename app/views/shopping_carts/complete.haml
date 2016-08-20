@@ -1,4 +1,6 @@
 .card.large-padding
+  .top-space
+    %h1 Gracias por adquirir nuestros productos
   %table.table.table-striped.table-hover.medium#table_shopping_cart
     %thead
       %td Producto
@@ -16,5 +18,3 @@
       %strong
         Total: $
         =@shopping_cart.total
-  .top-space
-  =render "payments/buttons"

@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+#maquinas de estado
+gem 'aasm'
 #Anotacion de los modelos
 gem "annotate"
 #gem pay pal
