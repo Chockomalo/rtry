@@ -9,7 +9,30 @@ class Stores::Paypal
   end
 
   def procces_payment
-    self.payment = Payment.new({
+    self.payment = Payment.new(payment_options)
+    self.payment
+  end
+
+  def procces_card(card_data)
+    options= payment_options
+    options[:payer][:payment_method]= "credit_card"
+    options[:payer][:founding_instruments][{
+      credit_card:{
+      type: CreditCardValidator::Validator.card_type(card_data[:number]),
+      number: card_data[:number],
+      expire_month: card_data[:expire_month],
+      expire_year: card_data[:expire_year],
+      cvv2: card_data[:cvv2]
+      #first_name ,
+      #last_name
+      }
+    }]
+    self.payment = Payment.new(options)
+    self.payment
+  end
+
+  def payment_options
+    {
       intent: "sale",
       payer:{
         payment_method: "paypal"
@@ -30,10 +53,9 @@ class Stores::Paypal
         return_url: @return_url,
         cancel_url: @cancel_url
       }
-      })
-      self.payment
+      }
   end
-  
+
   def self.checkout(payer_id, payment_id, &block)
     payment = Payment.find(payment_id)
     if payment.execute(payer_id: payer_id)

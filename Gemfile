@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+#Credit Card Validator
+gem "credit_card_validator"
 #maquinas de estado
 gem 'aasm'
 #Anotacion de los modelos
