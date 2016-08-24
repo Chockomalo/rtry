@@ -55,6 +55,10 @@ class Stores::Paypal
       }
       }
   end
+  def self.get_email(payment_id)
+      payment = Payment.find(payment_id)
+      payment.payer.payer_info.email
+  end
 
   def self.checkout(payer_id, payment_id, &block)
     payment = Payment.find(payment_id)

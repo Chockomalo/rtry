@@ -14,6 +14,7 @@ class ShoppingCart < ApplicationRecord
 
   has_many :products, through: :in_shopping_carts
   has_many :in_shopping_carts
+  has_many :my_payments
 
 
   aasm column: "status" do
@@ -30,9 +31,17 @@ class ShoppingCart < ApplicationRecord
 
   end
 
+  def payment
+    begin
+      my_payments.payed.first
+    rescue Exception => e
+      return nil
+    end
+  end
+
   def generate_links
     self.products.each do |product|
-      Link.create(expiration_date: DateTime.now + 7.days, product: product)
+      Link.create(expiration_date: DateTime.now + 7.days, product: product,email: payment.email)
     end
   end
 
