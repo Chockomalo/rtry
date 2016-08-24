@@ -23,15 +23,23 @@ class ShoppingCart < ApplicationRecord
 
     event :pay do
       after do
-        #TODO: mandar los archivos que el usuario compro
+        self.generate_links()
       end
       transitions from: :created, to: :payed
     end
 
   end
+
+  def generate_links
+    self.products.each do |product|
+      Link.create(expiration_date: DateTime.now + 7.days, product: product)
+    end
+  end
+
   def items
     self.products.map{ |product| product.paypal_form}
   end
+
   def total
     products.sum(:pricing)
   end
