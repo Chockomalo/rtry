@@ -16,7 +16,7 @@ class Stores::Paypal
   def procces_card(card_data)
     options= payment_options
     options[:payer][:payment_method]= "credit_card"
-    options[:payer][:founding_instruments][{
+    options[:payer][:funding_instruments]=[{
       credit_card:{
       type: CreditCardValidator::Validator.card_type(card_data[:number]),
       number: card_data[:number],
@@ -39,7 +39,7 @@ class Stores::Paypal
       },
       transactions:[
         {
-          items_list:{
+          item_list:{
             items: self.items
           },
           amount:{
