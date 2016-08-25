@@ -22,4 +22,9 @@ RSpec.describe Link, type: :model do
     expect(link.custom_id).to_not be_nil
     puts link.custom_id
   end
+  it "should send an email" do
+    expect{
+    FactoryGirl.create(:link)
+  }.to change(ActionMailer::Base.deliveries,:count).by(1)
+  end
 end
