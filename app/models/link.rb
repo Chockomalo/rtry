@@ -18,12 +18,20 @@ class Link < ApplicationRecord
   before_create :set_defaults
   after_create :send_email
   belongs_to :product
+  has_many :link_attachments
+
   def is_invalid?
     (DateTime.now > self.expiration_date || self.downloads >=5)
   end
 
   def update_downloads
     self.update(downloads: self.downloads+1)
+  end
+
+  def create_attachemt_links
+    product.attachments.each do |attachment|
+      self.link_attachments.create(attachment:attachment)
+    end
   end
 
   private
