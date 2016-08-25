@@ -18,6 +18,13 @@ class Link < ApplicationRecord
   before_create :set_defaults
   after_create :send_email
   belongs_to :product
+  def is_invalid?
+    (DateTime.now > self.expiration_date || self.downloads >=5)
+  end
+
+  def update_downloads
+    self.update(downloads: self.downloads+1)
+  end
 
   private
     def set_defaults
