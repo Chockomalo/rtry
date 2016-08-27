@@ -7,4 +7,8 @@
     %p
       Podrás acceder a él
       = 5 - @link.downloads
-      veces mas
+      veces más
+    %div
+      -@link_attachments.each do |link_attachment|
+        %p.medium
+          =link_to link_attachment.attachment.archivo_file_name, download_attachment_path(id: @link.custom_id, attachment_id: link_attachment.id)
